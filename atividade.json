@@ -1,0 +1,378 @@
+{
+  "info": {
+    "name": "Currículo API",
+    "description": "API completa para gerenciamento de usuários, experiências profissionais e formação acadêmica.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "description": "URL base da API"
+    }
+  ],
+  "item": [
+    {
+      "name": "Usuários",
+      "item": [
+        {
+          "name": "Listar todos os usuários",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            },
+            "description": "Retorna todos os usuários com experiências e formações"
+          }
+        },
+        {
+          "name": "Buscar usuário por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", ":userId"],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "uuid-do-usuario",
+                  "description": "ID do usuário"
+                }
+              ]
+            },
+            "description": "Busca um usuário com todas as relações"
+          }
+        },
+        {
+          "name": "Criar novo usuário",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"joao@example.com\",\n  \"password\": \"123456\",\n  \"name\": \"João Silva\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            },
+            "description": "Cria um novo usuário"
+          }
+        },
+        {
+          "name": "Atualizar usuário",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"joao.novo@example.com\",\n  \"password\": \"nova123\",\n  \"name\": \"João Silva Atualizado\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", ":userId"],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "uuid-do-usuario",
+                  "description": "ID do usuário"
+                }
+              ]
+            },
+            "description": "Atualiza todos os campos do usuário"
+          }
+        },
+        {
+          "name": "Deletar usuário",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users/:userId",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", ":userId"],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "uuid-do-usuario",
+                  "description": "ID do usuário"
+                }
+              ]
+            },
+            "description": "Remove o usuário e todas as suas relações (cascade)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Experiências Profissionais",
+      "item": [
+        {
+          "name": "Listar todas as experiências",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/experiences",
+              "host": ["{{baseUrl}}"],
+              "path": ["experiences"]
+            }
+          }
+        },
+        {
+          "name": "Buscar experiência por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/experiences/:expId",
+              "host": ["{{baseUrl}}"],
+              "path": ["experiences", ":expId"],
+              "variable": [
+                {
+                  "key": "expId",
+                  "value": "uuid-da-experiencia",
+                  "description": "ID da experiência"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar nova experiência",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"uuid-do-usuario\",\n  \"jobTitle\": \"Desenvolvedor Full Stack\",\n  \"company\": \"TechCorp\",\n  \"location\": \"São Paulo, SP\",\n  \"startDate\": \"2023-01-15\",\n  \"endDate\": \"2024-06-30\",\n  \"isCurrent\": false,\n  \"description\": \"Desenvolvimento de APIs e interfaces com React e Node.js\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/experiences",
+              "host": ["{{baseUrl}}"],
+              "path": ["experiences"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar experiência",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jobTitle\": \"Senior Full Stack\",\n  \"company\": \"TechCorp\",\n  \"location\": \"São Paulo, SP\",\n  \"startDate\": \"2023-01-15\",\n  \"endDate\": null,\n  \"isCurrent\": true,\n  \"description\": \"Liderança técnica e arquitetura de sistemas\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/experiences/:expId",
+              "host": ["{{baseUrl}}"],
+              "path": ["experiences", ":expId"],
+              "variable": [
+                {
+                  "key": "expId",
+                  "value": "uuid-da-experiencia",
+                  "description": "ID da experiência"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deletar experiência",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/experiences/:expId",
+              "host": ["{{baseUrl}}"],
+              "path": ["experiences", ":expId"],
+              "variable": [
+                {
+                  "key": "expId",
+                  "value": "uuid-da-experiencia",
+                  "description": "ID da experiência"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Formação Acadêmica",
+      "item": [
+        {
+          "name": "Listar todas as formações",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/educations",
+              "host": ["{{baseUrl}}"],
+              "path": ["educations"]
+            }
+          }
+        },
+        {
+          "name": "Buscar formação por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/educations/:eduId",
+              "host": ["{{baseUrl}}"],
+              "path": ["educations", ":eduId"],
+              "variable": [
+                {
+                  "key": "eduId",
+                  "value": "uuid-da-formacao",
+                  "description": "ID da formação"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar nova formação",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"uuid-do-usuario\",\n  \"degree\": \"Bacharelado em Ciência da Computação\",\n  \"institution\": \"USP\",\n  \"location\": \"São Paulo, SP\",\n  \"startDate\": \"2018-02-01\",\n  \"endDate\": \"2021-12-20\",\n  \"isCurrent\": false,\n  \"grade\": \"8.7\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/educations",
+              "host": ["{{baseUrl}}"],
+              "path": ["educations"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar formação",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"degree\": \"Mestrado em Engenharia de Software\",\n  \"institution\": \"UNICAMP\",\n  \"location\": \"Campinas, SP\",\n  \"startDate\": \"2022-03-01\",\n  \"endDate\": null,\n  \"isCurrent\": true,\n  \"grade\": null\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/educations/:eduId",
+              "host": ["{{baseUrl}}"],
+              "path": ["educations", ":eduId"],
+              "variable": [
+                {
+                  "key": "eduId",
+                  "value": "uuid-da-formacao",
+                  "description": "ID da formação"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deletar formação",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/educations/:eduId",
+              "host": ["{{baseUrl}}"],
+              "path": ["educations", ":eduId"],
+              "variable": [
+                {
+                  "key": "eduId",
+                  "value": "uuid-da-formacao",
+                  "description": "ID da formação"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
