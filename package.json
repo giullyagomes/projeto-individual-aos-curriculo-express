@@ -1,0 +1,36 @@
+{
+  "name": "aos-curriculo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch api/src/index.js",
+    "start": "node api/src/index.js",
+    "migrate": "node migrate.js",
+    "studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.44.6",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giullyagomes/projeto-individual-aos-curriculo-express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/giullyagomes/projeto-individual-aos-curriculo-express/issues"
+  },
+  "homepage": "https://github.com/giullyagomes/projeto-individual-aos-curriculo-express#readme",
+  "packageManager": "npm@11.5.2+sha512.aac1241cfc3f41dc38780d64295c6c6b917a41e24288b33519a7b11adfc5a54a5f881c642d7557215b6c70e01e55655ed7ba666300fd0238bc75fb17478afaf3"
+}
